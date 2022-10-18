@@ -70,6 +70,9 @@ const _handlers = {
      * @param {string} eventName
      */
     event(htmlElement, config, eventName) {
+        if (eventName.toLowerCase() === "oncreate") {
+            return config[eventName].call(htmlElement);
+        }
         htmlElement.addEventListener(eventName.toLowerCase().substring(2), config[eventName]);
     },
 

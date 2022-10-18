@@ -102,7 +102,24 @@ describe("Widget", () => {
         expect(el.className).toBe("button btn-primary");
     });
 
-    Widget({
+    it("should call on create", () => {
+        const onCreate = jest.fn();
+        const el = Widget({
+            onCreate
+        });
+        expect(onCreate).toBeCalledTimes(1);
+    });
 
-    })
+    it("should call on create", () => {
+        const el = Widget({
+            child: Widget({
+                onCreate() {
+                    expect(this instanceof HTMLElement).toBeTruthy();
+                    expect(this.parentNode).toBeFalsy();
+                    this.className = "yeah";
+                }
+            })
+        });
+        expect(el.children[0].className).toBe("yeah");
+    });
 });
