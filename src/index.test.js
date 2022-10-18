@@ -110,7 +110,7 @@ describe("Widget", () => {
         expect(onCreate).toBeCalledTimes(1);
     });
 
-    it("should call on create", () => {
+    it("should call on create before element is attached to parent", () => {
         const el = Widget({
             child: Widget({
                 onCreate() {
@@ -121,5 +121,53 @@ describe("Widget", () => {
             })
         });
         expect(el.children[0].className).toBe("yeah");
+    });
+
+    it("should not render an element with if set to false", () => {
+        const el = Widget({
+            child: Widget({
+                if: false
+            })
+        });
+        setTimeout(() => {
+            expect(el.children.length).toBe(0);
+        });
+    });
+
+    it("should render an element with if set to true", () => {
+        const el = Widget({
+            child: Widget({
+                if: true
+            })
+        });
+        setTimeout(() => {
+            expect(el.children.length).toBe(1);
+        });
+    });
+
+    it("should not render an element with if set to false via callback", () => {
+        const el = Widget({
+            child: Widget({
+                if(cb) {
+                    cb(false)
+                }
+            })
+        });
+        setTimeout(() => {
+            expect(el.children.length).toBe(0);
+        });
+    });
+
+    it("should render an element with if set to true via callback", () => {
+        const el = Widget({
+            child: Widget({
+                if(cb) {
+                    cb(true)
+                }
+            })
+        });
+        setTimeout(() => {
+            expect(el.children.length).toBe(1);
+        });
     });
 });
