@@ -4,6 +4,7 @@ This library provides an easy to use wrapper to create HTMLElements in your web 
 
 [![Tests](https://github.com/dobschal/js-ui-kit-widget/actions/workflows/unit-test.yml/badge.svg)](https://github.com/dobschal/js-ui-kit-widget/actions/workflows/unit-test.yml)
 [![NPM](https://img.shields.io/npm/v/js-ui-kit-widget)](https://www.npmjs.com/package/js-ui-kit-widget)
+[![Size](https://img.shields.io/bundlephobia/min/js-ui-kit-widget?style=plastic)](https://img.shields.io/bundlephobia/min/js-ui-kit-widget?style=plastic)
 
 <hr />
 
@@ -95,4 +96,29 @@ Widget({
     }
 });
 ```
-<hr />
+
+### Events
+Events do always have the related HTML element bind to the this context.
+All native HTML elements events like onClick, onMouseOver, etc. are available.
+
+Example:
+```javascript
+Widget({
+    onClick() {
+        this.style.backgroundColor = "red";
+    }
+});
+```
+
+#### onCreate
+This is a special non native event that gets called when the HTML element is created.
+```javascript
+Image({
+    onCreate() {
+        this.style.opacity = 0;
+    },
+    onLoad() {
+        this.style.opacity = 1;
+    }
+});
+```
