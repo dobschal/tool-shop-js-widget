@@ -170,4 +170,38 @@ describe("Widget", () => {
             expect(el.children.length).toBe(1);
         });
     });
+
+    it("should add the element later at same position when if changed", async () => {
+        await new Promise((resolve, reject) => {
+            const el = Widget({
+                children: [
+                    Widget({ text: "yeah-1" }),
+                    Widget({
+                        text: "yeah-2",
+                        if(cb) {
+                            cb(false);
+                            setTimeout(() => {
+                                cb(true);
+                                setTimeout(() => {
+                                    try {
+                                        expect(el.children[0].innerText).toBe("yeah-1");
+                                        expect(el.children[1].innerText).toBe("yeah-2");
+                                        expect(el.children[2].innerText).toBe("yeah-3");
+                                        expect(el.children.length).toBe(3);
+                                        resolve();
+                                    } catch (e) {
+                                        reject(e);
+                                    }
+                                });
+                            }, 100);
+                        }
+                    }),
+                    Widget({ text: "yeah-3" })
+                ]
+            });
+            setTimeout(() => {
+                expect(el.children.length).toBe(2);
+            });
+        });
+    });
 });

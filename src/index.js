@@ -58,18 +58,13 @@ const _handlers = {
         if (typeof config.if === "function") {
             return config.if(i => _handlers.if(htmlElement, { if: i }));
         }
-
-        // TODO: if we remove a child, we need to check where to add it later again...
-
         setTimeout(() => {
             if (!config.if && htmlElement.parentNode) {
                 htmlElement.oldParentNode = htmlElement.parentNode;
                 htmlElement.oldIndex = Array.from(htmlElement.parentNode.children).indexOf(htmlElement);
                 htmlElement.parentNode.removeChild(htmlElement);
             } else if (config.if && htmlElement.oldParentNode && !htmlElement.parentNode) {
-                htmlElement.oldParentNode.append(htmlElement);
-            } else {
-                console.error("if is wrong somehow: ", config.if, htmlElement);
+                htmlElement.oldParentNode.insertBefore(htmlElement, htmlElement.oldParentNode.children[htmlElement.oldIndex]);
             }
         });
     },
