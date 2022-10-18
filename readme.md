@@ -2,9 +2,9 @@
 
 This JavaScript Declarative UI library provides an easy to use wrapper to create HTMLElements in your web application. This allows you to build web apps without the direct use of HTML in a declarative way.
 
-[![Tests](https://github.com/dobschal/js-ui-kit-widget/actions/workflows/unit-test.yml/badge.svg)](https://github.com/dobschal/js-ui-kit-widget/actions/workflows/unit-test.yml)
-[![NPM](https://img.shields.io/npm/v/js-ui-kit-widget)](https://www.npmjs.com/package/js-ui-kit-widget)
-[![Size](https://img.shields.io/bundlephobia/min/js-ui-kit-widget?style=plastic)](https://img.shields.io/bundlephobia/min/js-ui-kit-widget?style=plastic)
+[![Tests](https://github.com/dobschal/tool-shop-js-widget/actions/workflows/unit-test.yml/badge.svg)](https://github.com/dobschal/tool-shop-js-widget/actions/workflows/unit-test.yml)
+[![NPM](https://img.shields.io/npm/v/tool-shop-js-widget)](https://www.npmjs.com/package/tool-shop-js-widget)
+[![Size](https://img.shields.io/bundlephobia/min/tool-shop-js-widget?style=plastic)](https://img.shields.io/bundlephobia/min/tool-shop-js-widget?style=plastic)
 
 <hr />
 
@@ -14,13 +14,13 @@ This JavaScript Declarative UI library provides an easy to use wrapper to create
 
 Install with [NPM](https://nodejs.dev/en/) using your CLI:
 ```bash
-npm install --save js-ui-kit-widget
+npm install --save tool-shop-js-widget
 ```
 
 ### Use:
 Import ES Module into your JavaScript file and create Widget.
 ```javascript
-import { Widget } from "js-ui-kit-widget";
+import { Widget } from "tool-shop-js-widget";
 
 Widget({
     text: "Hello World",
@@ -40,7 +40,7 @@ Load your script as module into a index.html file:
 
 Createa index.js file, import the JS UI Kit Widget and render your first Widget to the page:
 ```javascript
-import { Widget } from "js-ui-kit-widget";
+import { Widget } from "tool-shop-js-widget";
 
 Widget({
     parent: document.body,
