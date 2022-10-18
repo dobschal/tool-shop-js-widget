@@ -3,6 +3,7 @@
 This library provides an easy to use wrapper to create HTMLElements in your web application. This allows you to build web apps without the direct use of HTML in a declarative way.
 
 [![Tests](https://github.com/dobschal/js-ui-kit-widget/actions/workflows/unit-test.yml/badge.svg)](https://github.com/dobschal/js-ui-kit-widget/actions/workflows/unit-test.yml)
+[![NPM](https://img.shields.io/npm/v/js-ui-kit-widget)](https://www.npmjs.com/package/js-ui-kit-widget)
 
 <hr />
 
