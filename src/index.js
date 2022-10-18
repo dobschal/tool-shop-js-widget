@@ -18,6 +18,8 @@
  * @property {(Event) => void} onMouseUp
  */
 
+export { Image } from "./Image.js";
+
 /**
  * @param {WidgetConfig} config 
  * @returns {HTMLElement}
