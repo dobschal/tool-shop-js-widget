@@ -1,9 +1,21 @@
 /**
  * @typedef {Object} WidgetConfig
- * @property {string | ((string) => void) => [string]} text
- * @property {string} tag
- * @property {HTMLElement | (callback: (HTMLElement) => void) => void} child
- * @property {Array<HTMLElement> | (callback: (Array<HTMLElement>) => void) => void} children
+ * @property {string | ((string) => void) => void} [text]
+ * @property {string} [tag] - like "div", "button", "ul", etc.
+ * @property {{[string]: string}} [attributes] - attributes to be set on the actual HTML element
+ * @property {{[string]: string}} [attr] - shortcut for attributes
+ * @property {HTMLElement | (callback: (HTMLElement) => void) => void} [child]
+ * @property {Array<HTMLElement> | (callback: (Array<HTMLElement>) => void) => void} [children]
+ * @property {HTMLElement} [parent] - the HTML element this widget should be attached too immediately
+ * @property {string | ((string) => void) => void} style
+ * @property {Array<string> | ((Array<string>) => void) => void} styles
+ * @property {(Event) => void} onClick
+ * @property {(Event) => void} onSubmit
+ * @property {(Event) => void} onKeyUp
+ * @property {(Event) => void} onKeyDown
+ * @property {(Event) => void} onMouseMove
+ * @property {(Event) => void} onMouseDown
+ * @property {(Event) => void} onMouseUp
  */
 
 /**
@@ -65,6 +77,31 @@ const _handlers = {
      */
     parent(htmlElement, config) {
         config.parent.append(htmlElement);
+    },
+
+    /**
+     * @param {HTMLElement} htmlElement 
+     * @param {WidgetConfig} config 
+     */
+    style(htmlElement, config) {
+        if (typeof config.style === "function") {
+            return config.style(style => _handlers.style(htmlElement, { style }));
+        }
+        htmlElement.className = config.style;
+    },
+
+    /**
+     * @param {HTMLElement} htmlElement 
+     * @param {WidgetConfig} config 
+     */
+    styles(htmlElement, config) {
+        if (typeof config.styles === "function") {
+            return config.styles(styles => _handlers.styles(htmlElement, { styles }));
+        }
+        htmlElement.className = "";
+        config.styles.forEach(style => {
+            htmlElement.classList.add(style);
+        });
     },
 
     /**

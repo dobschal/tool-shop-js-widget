@@ -1,6 +1,6 @@
 {
   "name": "js-ui-kit-widget",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JavaScript Library that provides a function to easily create instances of HTMLElements without writing HTML code.",
   "main": "src/index.js",
   "scripts": {
