@@ -1,14 +1,14 @@
 {
-  "name": "js-ui-kit-widget",
-  "version": "0.0.4",
-  "description": "JavaScript Library that provides a function to easily create instances of HTMLElements without writing HTML code.",
+  "name": "tool-shop-js-widget",
+  "version": "0.0.1",
+  "description": "JavaScript Declarative UI Library that provides functions to easily create instances of HTMLElements without writing HTML code.",
   "main": "src/index.js",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dobschal/js-ui-kit-widget.git"
+    "url": "https://github.com/dobschal/tool-shop-js-widget.git"
   },
   "type": "module",
   "keywords": [
@@ -22,9 +22,9 @@
   "author": "Sascha Dobschal",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/dobschal/js-ui-kit-widget/issues"
+    "url": "https://github.com/dobschal/tool-shop-js-widget/issues"
   },
-  "homepage": "https://github.com/dobschal/js-ui-kit-widget#readme",
+  "homepage": "https://github.com/dobschal/tool-shop-js-widget#readme",
   "devDependencies": {
     "jest": "^29.2.0",
     "jest-environment-jsdom": "^29.2.0"
