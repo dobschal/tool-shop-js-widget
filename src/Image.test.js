@@ -1,5 +1,5 @@
-import { it, expect, describe } from '@jest/globals';
-import { Image } from './index.js';
+import { it, expect, describe } from "@jest/globals";
+import { Image } from "./index.js";
 
 describe("Image", () => {
     it("should create a HTML element with tag 'img'", () => {

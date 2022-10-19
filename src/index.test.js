@@ -1,5 +1,5 @@
 import { Widget } from "./index.js";
-import { jest, it, expect, describe } from '@jest/globals';
+import { jest, it, expect, describe } from "@jest/globals";
 
 describe("Widget", () => {
 
@@ -104,7 +104,7 @@ describe("Widget", () => {
 
     it("should call on create", () => {
         const onCreate = jest.fn();
-        const el = Widget({
+        Widget({
             onCreate
         });
         expect(onCreate).toBeCalledTimes(1);
@@ -149,7 +149,7 @@ describe("Widget", () => {
         const el = Widget({
             child: Widget({
                 if(cb) {
-                    cb(false)
+                    cb(false);
                 }
             })
         });
@@ -162,7 +162,7 @@ describe("Widget", () => {
         const el = Widget({
             child: Widget({
                 if(cb) {
-                    cb(true)
+                    cb(true);
                 }
             })
         });
@@ -203,5 +203,29 @@ describe("Widget", () => {
                 expect(el.children.length).toBe(2);
             });
         });
+    });
+
+    it("should change a child element in a slot correctly", () => {
+        const el = Widget({
+            children: [
+                Widget({
+                    style: "header"
+                }),
+                Widget({
+                    slot: "default",
+                    style: "content",
+                    text: "content here..."
+                }),
+                Widget({
+                    style: "footer"
+                })
+            ]
+        });
+        expect(el.children[1].children.length).toBe(0);
+        el.slots.default(Widget({
+            text: "Bammm"
+        }));
+        console.log("Children: ", el.children.length);
+        expect(el.children[1].children[0].innerText).toBe("Bammm");
     });
 });

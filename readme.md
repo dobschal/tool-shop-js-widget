@@ -151,6 +151,29 @@ TBA
 
 TBA
 
+### slot
+Slots allow you to easily replace child elements that are nested.
+In example you want to change the page element in a layout.
+
+```javascript
+// Create instance of our layout
+const layout = Widget({
+    style: "layout",
+    children: [
+        Widget(/* ... header ... */ ),
+        Widget({
+            slot: "content"
+        }),
+        Widget(/* ... footer ... */ ),
+    ]
+});
+
+// Change the page rendered inside the layout
+layout.slots.content(
+    Widget(/* ... page ... */)
+);
+```
+
 <hr />
 
 ## Widgets
@@ -179,3 +202,7 @@ TBA
 ## License
 
 TBA
+
+## Open
+
+- [ ] Complete readme file

@@ -1,6 +1,6 @@
 /**
  * @typedef {Object} WidgetConfig
- * @property {string | ((string) => void) => void} [text]
+ * @property {string | ((string) => void) => void} [text] - innerText of the HTML element
  * @property {string} [tag] - like "div", "button", "ul", etc.
  * @property {{[string]: string}} [attributes] - attributes to be set on the actual HTML element
  * @property {{[string]: string}} [attr] - shortcut for attributes
@@ -27,6 +27,22 @@ export { Image } from "./Image.js";
 export function Widget(config = {}) {
     const htmlElement = document.createElement(config.tag ?? "div");
     delete config.tag;
+
+    //  If we call "slots" on a parent element, we might need 
+    //  to find the child elemenmt with the wanted slot.
+    //  So we grab a Proxy to chain thru the children and return the actual
+    //  slot handler function.
+    htmlElement.slots = new Proxy({}, {
+        get(target, key) {
+            for (let i = 0; i < htmlElement.children.length; i++) {
+                const child = htmlElement.children[i];
+                if (child.slots && typeof child.slots[key] === "function") {
+                    return child.slots[key];
+                }
+            }
+        }
+    });
+
     for (const key in config) {
         if (Object.hasOwnProperty.call(config, key)) {
             const isAttributes = key === "attr" || key === "attributes";
@@ -49,6 +65,18 @@ export function Widget(config = {}) {
 }
 
 const _handlers = {
+
+    /**
+     * @param {HTMLElement} htmlElement 
+     * @param {WidgetConfig} config 
+     */
+    slot(htmlElement, config) {
+        htmlElement.slots = {};
+        htmlElement.slots[config.slot] = (...children) => {
+            htmlElement.innerHTML = "";
+            htmlElement.append(...children);
+        };
+    },
 
     /**
      * @param {HTMLElement} htmlElement 
@@ -162,4 +190,4 @@ const _handlers = {
         htmlElement.innerHTML = "";
         htmlElement.append(...config.children);
     }
-}
+};
