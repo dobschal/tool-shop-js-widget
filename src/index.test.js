@@ -225,7 +225,6 @@ describe("Widget", () => {
         el.slots.default(Widget({
             text: "Bammm"
         }));
-        console.log("Children: ", el.children.length);
         expect(el.children[1].children[0].innerText).toBe("Bammm");
     });
 });

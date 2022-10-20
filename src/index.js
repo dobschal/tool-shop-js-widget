@@ -19,6 +19,8 @@
  */
 
 export { Image } from "./Image.js";
+export { Text } from "./Text.js";
+export { Headline } from "./Headline.js";
 
 /**
  * @param {WidgetConfig} config 

@@ -1,6 +1,6 @@
 {
   "name": "tool-shop-js-widget",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "JavaScript Declarative UI Library that provides functions to easily create instances of HTMLElements without writing HTML code.",
   "main": "src/index.js",
   "scripts": {
