@@ -4,7 +4,6 @@ This JavaScript Declarative UI library provides an easy to use wrapper to create
 
 [![Tests](https://github.com/dobschal/tool-shop-js-widget/actions/workflows/unit-test.yml/badge.svg)](https://github.com/dobschal/tool-shop-js-widget/actions/workflows/unit-test.yml)
 [![NPM](https://img.shields.io/npm/v/tool-shop-js-widget)](https://www.npmjs.com/package/tool-shop-js-widget)
-[![Size](https://img.shields.io/bundlephobia/min/tool-shop-js-widget?style=plastic)](https://img.shields.io/bundlephobia/min/tool-shop-js-widget?style=plastic)
 
 <hr />
 
@@ -59,6 +58,21 @@ parcel index.html
 # Open your browser at http://localhost:1234
 ```
 <hr />
+
+## For Contributors
+
+A GitHub Action is setup to automatically publish the latest version on making a GitHub Release.
+Just bump the version in the package.json file and create a tag on GitHub for the release.
+
+## API
+
+### Constructor
+
+### Remove
+Remove an instance of HTMLElement from DOM:
+```javascript
+Widget.remove(element);
+```
 
 ## Options
 All options are optional!

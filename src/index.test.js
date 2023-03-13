@@ -3,6 +3,18 @@ import { jest, it, expect, describe } from "@jest/globals";
 
 describe("Widget", () => {
 
+    it("should remove a child on calling remove", () => {
+        const child = Widget({
+            text: "yeah"
+        });
+        const el = Widget({
+            children: cb => cb([child])
+        });
+        expect(el.children.length).toBe(1);
+        Widget.remove(child);
+        expect(el.children.length).toBe(0);
+    });
+
     it("should set children from callback", () => {
         const el = Widget({
             children: cb => cb([Widget({

@@ -21,6 +21,7 @@
 export { Image } from "./Image.js";
 export { Text } from "./Text.js";
 export { Headline } from "./Headline.js";
+export { Paragraph } from "./Paragraph.js";
 
 /**
  * @param {WidgetConfig} config 
@@ -192,4 +193,15 @@ const _handlers = {
         htmlElement.innerHTML = "";
         htmlElement.append(...config.children);
     }
+};
+
+/**
+ * @param {HTMLElement} element 
+ * @returns {boolean} - true if element removed
+ */
+Widget.remove = function(element) {
+    if(!element || !element.parentNode) {
+        return false;
+    }
+    element.parentElement.removeChild(element);
 };
