@@ -1,0 +1,28 @@
+body {
+    display: flex;
+}
+
+body>* {
+    margin: auto;
+    width: 100%;
+    max-width: 420px;
+}
+
+button {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+img {
+    width: 100%;
+    margin-bottom: 1rem;
+    aspect-ratio: 750 / 1260;
+    border-radius: 1rem;
+    background-color: #EFEFEF;
+    border: none;
+}
+
+input {
+    display: block;
+    margin-bottom: 1rem;
+}

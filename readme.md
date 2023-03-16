@@ -67,6 +67,16 @@ Just bump the version in the package.json file and create a tag on GitHub for th
 ## API
 
 ### Constructor
+There is a default Widget to cover all needs. For all native HTML elments short hand Widget constructors are available.
+```javascript
+// General constructor:
+const htmlElement = Widget({
+    tag: "h1",
+    text: "Hello World"
+});
+// Equivalent is:
+const htmlElement = Headline("Hello World");
+```
 
 ### Remove
 Remove an instance of HTMLElement from DOM:

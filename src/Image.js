@@ -1,20 +1,20 @@
 import { Widget } from "./index.js";
 
 /**
- * @param {import("./index.js").WidgetConfig & { url: string }} config
+ * @param {string|(string) => void} url
+ * @param {import("./index.js").WidgetConfig} [config]
  * @returns {HTMLElement}
  */
-export function Image(config) {
+export function Image(url, config = {}) {
     config.tag = config.tag ?? "img";
     if ("attributes" in config) {
-        config.attributes.src = config.url;
+        config.attributes.src = url;
     }
     else if ("attr" in config) {
-        config.attr.src = config.url;
+        config.attr.src = url;
     }
     else {
-        config.attr = { src: config.url };
+        config.attr = { src: url };
     }
-    delete config.url;
     return Widget(config);
 }

@@ -2,14 +2,15 @@
  * @typedef {Object} WidgetConfig
  * @property {string | ((string) => void) => void} [text] - innerText of the HTML element
  * @property {string} [tag] - like "div", "button", "ul", etc.
- * @property {{[string]: string}} [attributes] - attributes to be set on the actual HTML element
- * @property {{[string]: string}} [attr] - shortcut for attributes
+ * @property {{[string]: string|((string) => void) => void}} [attributes] - attributes to be set on the actual HTML element
+ * @property {{[string]: string|((string) => void) => void}} [attr] - shortcut for attributes
  * @property {HTMLElement | (callback: (HTMLElement) => void) => void} [child]
  * @property {Array<HTMLElement> | (callback: (Array<HTMLElement>) => void) => void} [children]
  * @property {HTMLElement} [parent] - the HTML element this widget should be attached too immediately
  * @property {string | ((string) => void) => void} style
  * @property {Array<string> | ((Array<string>) => void) => void} styles
  * @property {(Event) => void} onClick
+ * @property {(Event) => void} onCreate
  * @property {(Event) => void} onSubmit
  * @property {(Event) => void} onKeyUp
  * @property {(Event) => void} onKeyDown
@@ -20,8 +21,10 @@
 
 export { Image } from "./Image.js";
 export { Text } from "./Text.js";
-export { Headline } from "./Headline.js";
+export { Headline, SubHeadline } from "./Headline.js";
 export { Paragraph } from "./Paragraph.js";
+export { Button } from "./Button.js";
+export { Input } from "./Input.js";
 
 /**
  * @param {WidgetConfig} config 
@@ -103,11 +106,20 @@ const _handlers = {
     /**
      * @param {HTMLElement} htmlElement 
      * @param {WidgetConfig} config 
-     * @param {string} key
+     * @param {'attr'|'attributes'} key
      */
     attributes(htmlElement, config, key) {
         for (const attributeName in config[key]) {
             if (Object.hasOwnProperty.call(config[key], attributeName)) {
+                if (typeof config[key][attributeName] === "function") {
+                    config[key][attributeName]((attributeValue) => { 
+                        const option = {};
+                        option[key] = {};
+                        option[key][attributeName] = attributeValue;
+                        _handlers.attributes(htmlElement, option, key);
+                    });
+                    continue;
+                }
                 const attributeValue = config[key][attributeName];
                 htmlElement.setAttribute(attributeName, attributeValue);
             }
