@@ -7,16 +7,16 @@
  * @property {HTMLElement | (callback: (HTMLElement) => void) => void} [child]
  * @property {Array<HTMLElement> | (callback: (Array<HTMLElement>) => void) => void} [children]
  * @property {HTMLElement} [parent] - the HTML element this widget should be attached too immediately
- * @property {string | ((string) => void) => void} style
- * @property {Array<string> | ((Array<string>) => void) => void} styles
- * @property {(Event) => void} onClick
- * @property {(Event) => void} onCreate
- * @property {(Event) => void} onSubmit
- * @property {(Event) => void} onKeyUp
- * @property {(Event) => void} onKeyDown
- * @property {(Event) => void} onMouseMove
- * @property {(Event) => void} onMouseDown
- * @property {(Event) => void} onMouseUp
+ * @property {string | ((string) => void) => void} [style]
+ * @property {Array<string> | ((Array<string>) => void) => void} [styles]
+ * @property {(Event) => void} [onClick]
+ * @property {(Event) => void} [onCreate]
+ * @property {(Event) => void} [onSubmit]
+ * @property {(Event) => void} [onKeyUp]
+ * @property {(Event) => void} [onKeyDown]
+ * @property {(Event) => void} [onMouseMove]
+ * @property {(Event) => void} [onMouseDown]
+ * @property {(Event) => void} [onMouseUp]
  */
 
 export { Image } from "./Image.js";
